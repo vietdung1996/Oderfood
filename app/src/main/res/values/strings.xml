@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">OderFood</string>
+
+    <string name="booki">BookI</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="eat_it_together">Eat it together</string>
+    <string name="skip">Skip</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="sign_up">Sign up</string>
+    <string name="forget_password">Forget Password.?</string>
+    <string name="signinsuccess">SignIn Success !</string>
+    <string name="signinfail">SignIn Fail !</string>
+    <string name="passwordfails">Password fails</string>
+    <string name="guest">guest</string>
+    <string name="search">search</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

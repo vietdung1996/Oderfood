@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/colorBlueGrey">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_shopping_cart_white_24dp"
+        android:layout_marginTop="@dimen/dp_5"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_10"
+        android:text="1"
+        android:background="@drawable/circle"
+        android:gravity="center"
+        android:layout_gravity="right"/>
+
+</FrameLayout>
