@@ -124,26 +124,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-//    private void authenticateUser(String email, String pass) {
-//        mService.loginUser(email, pass)
-//                .enqueue(new Callback<APIResponse>() {
-//                    @Override
-//                    public void onResponse(Call<APIResponse> call, Response<APIResponse> response) {
-//                        APIResponse result = response.body();
-//                        if (result.isError()) {
-//                            Toast.makeText(MainActivity.this, result.getError_msg(), Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            Toast.makeText(MainActivity.this, "Login success !", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<APIResponse> call, Throwable t) {
-//
-//                    }
-//                });
-//    }
-
     @Override
     public void LoginSuccess() {
         Toast.makeText(MainActivity.this, "Login Success !", Toast.LENGTH_SHORT).show();

@@ -1,8 +1,13 @@
 package com.vietdung.oderfood.ui.home;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -11,17 +16,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 
 
 import com.vietdung.oderfood.R;
 import com.vietdung.oderfood.adapter.ViewPagerAdapter;
+import com.vietdung.oderfood.ui.typemenu.TypeMenuActivity;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener,NavigationView.OnNavigationItemSelectedListener {
     private NavigationView mNavigationView;
     private Toolbar mToolbarHome;
     private DrawerLayout mDrawerLayout;
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
+    private AppBarLayout mAppBarLayout;
+    private CollapsingToolbarLayout mCollapsingToolbarLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +49,10 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         return super.onOptionsItemSelected(item);
     }
+
 
     private void addEvents() {
         setToolBar();
@@ -50,6 +61,7 @@ public class HomeActivity extends AppCompatActivity {
     private void setToolBar() {
         setSupportActionBar(mToolbarHome);
         getSupportActionBar();
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         mToolbarHome.setNavigationIcon(android.R.drawable.ic_menu_sort_by_size);
         mToolbarHome.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,5 +83,40 @@ public class HomeActivity extends AppCompatActivity {
         mViewPager = findViewById(R.id.view_pager);
         mViewPager.setAdapter(viewPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
+        mAppBarLayout = findViewById(R.id.app_bar_layout);
+        mCollapsingToolbarLayout = findViewById(R.id.collap_toolbar);
+        mAppBarLayout.addOnOffsetChangedListener(this);
+        mNavigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+        if(mCollapsingToolbarLayout.getHeight() +verticalOffset <= 1.5 * ViewCompat.getMinimumHeight(mCollapsingToolbarLayout)){
+            LinearLayout linearLayout = mAppBarLayout.findViewById(R.id.ln_search);
+            linearLayout.animate().alpha(0).setDuration(100);
+
+        }else{
+            LinearLayout linearLayout = mAppBarLayout.findViewById(R.id.ln_search);
+            linearLayout.animate().alpha(1).setDuration(2000);
+        }
+
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.nav_home:
+                mDrawerLayout.closeDrawers();
+                break;
+            case R.id.nav_menu:
+                Intent intent = new Intent(HomeActivity.this, TypeMenuActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_history:
+                break;
+            case R.id.nav_user:
+                break;
+        }
+        return false;
     }
 }

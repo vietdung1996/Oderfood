@@ -22,7 +22,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         mFragments.add(new FragmentDrinks());
         mFragments.add(new FragmentHightLights());
 
-        mFragmentTitles.add("Chương trình huyến mãi");
+        mFragmentTitles.add("Chương trình khuyến mãi");
         mFragmentTitles.add("Nước uống");
         mFragmentTitles.add("Nổi bât");
     }
