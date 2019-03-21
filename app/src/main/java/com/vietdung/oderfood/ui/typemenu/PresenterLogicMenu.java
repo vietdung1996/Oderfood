@@ -29,15 +29,14 @@ public class PresenterLogicMenu implements PresenterMenu.Presenter {
                 if(response.isSuccessful()){
                     mTypeFoods = response.body();
                     mView.disPlayList(mTypeFoods);
-                    Log.d("wtffff", "onResponse: "+mTypeFoods);
                 }else{
-                    Log.d("taisao", "addEvents: "+mTypeFoods);
+
                 }
             }
 
             @Override
             public void onFailure(Call<List<TypeFood>> call, Throwable t) {
-                Log.d("danhsachsaonull", "addEvents: "+mTypeFoods);
+
             }
         });
         return mTypeFoods;

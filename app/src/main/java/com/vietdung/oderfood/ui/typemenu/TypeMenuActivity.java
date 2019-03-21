@@ -54,7 +54,7 @@ public class TypeMenuActivity extends AppCompatActivity implements PresenterMenu
     }
 
     private void initView() {
-        mRecyclerView = findViewById(R.id.recycler_menu);
+        mRecyclerView = findViewById(R.id.recycler_type_menu);
         mToolbarMenu = findViewById(R.id.toolbar_menu);
         mTypeFoods = new ArrayList<>();
         mTypeFoodAdapter = new TypeFoodAdapter(TypeMenuActivity.this,mTypeFoods);

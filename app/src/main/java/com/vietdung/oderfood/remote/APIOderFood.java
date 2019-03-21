@@ -2,16 +2,19 @@ package com.vietdung.oderfood.remote;
 
 
 import com.vietdung.oderfood.model.APIResponse;
+import com.vietdung.oderfood.model.Food;
 import com.vietdung.oderfood.model.TypeFood;
 
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface APIOderFood {
     @FormUrlEncoded
@@ -24,6 +27,10 @@ public interface APIOderFood {
 
     @GET("gettypefood.php")
     Call<List<TypeFood>> getTypeFood();
+
+    @FormUrlEncoded
+    @POST("getmenufood.php")
+    Call<List<Food>> getFood(@Query("page") Integer page, @FieldMap Map<String, String> params);
 
 
 }
