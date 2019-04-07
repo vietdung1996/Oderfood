@@ -5,9 +5,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.vietdung.oderfood.ui.home.fragment.FragmentDrinks;
-import com.vietdung.oderfood.ui.home.fragment.FragmentHightLights;
-import com.vietdung.oderfood.ui.home.fragment.FragmentPromotion;
+import com.vietdung.oderfood.ui.home.fragmentsaleof.FragmentDrinks;
+import com.vietdung.oderfood.ui.home.fragmentsaleof.FragmentHightLights;
+import com.vietdung.oderfood.ui.home.fragmentsaleof.FragmentPromotion;
 
 import java.util.ArrayList;
 import java.util.List;

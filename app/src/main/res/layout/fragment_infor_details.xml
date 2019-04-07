@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_name_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_5"
+        android:text="@string/welcome_back"
+        android:textColor="@color/colorPink"
+        android:textSize="@dimen/sp_18" />
+
+    <TextView
+        android:id="@+id/text_price_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_5"
+        android:text="@string/welcome_back"
+        android:textSize="@dimen/sp_16"
+        android:layout_marginTop="@dimen/dp_5"/>
+
+    <RatingBar
+        android:id="@+id/rating_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_5"
+        android:scaleX=".5"
+        android:scaleY=".5"
+        android:transformPivotX="0dp"
+        android:transformPivotY="0dp"
+        android:layout_marginTop="@dimen/dp_5"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_5"
+        android:text="@string/information_food"
+        android:textColor="@color/colorPink"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:id="@+id/text_infor_food"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_5"
+        android:text="Ngon bổ rẻ"
+        android:textSize="@dimen/sp_16" />
+
+
+</LinearLayout>

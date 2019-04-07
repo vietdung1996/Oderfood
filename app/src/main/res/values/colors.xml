@@ -11,5 +11,7 @@
     <color name="colorPink">#f10151</color>
     <color name="colorBlueGrey">#526b77</color>
     <color name="backgroundlogo">#f67122</color>
+    <color name="color_green">#4CAF50</color>
     <color name="backgroungtransparentGreen">#6643A047</color>
+    <color name="colorBlack">#0D0D0D</color>
 </resources>

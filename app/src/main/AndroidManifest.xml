@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.vietdung.oderfood">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -10,7 +11,10 @@
         android:label=""
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.search.SearchActivity"></activity>
+        <activity android:name=".ui.cart.CartActivity" />
         <activity android:name=".ui.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +26,12 @@
         <activity android:name=".ui.login.MainActivity" />
         <activity android:name=".ui.typemenu.TypeMenuActivity" />
         <activity android:name=".ui.menu.MenuActivity" />
-        <activity android:name=".ui.fooddetails.FoodDetailsActivity"></activity>
+        <activity android:name=".ui.fooddetails.FoodDetailsActivity" />
+        <activity
+            android:name=".ui.cart.CartActivity"
+            tools:ignore="DuplicateActivity" />
+        <activity android:name=".ui.search.SearchActivity"
+            tools:ignore="DuplicateActivity" />
     </application>
 
 </manifest>

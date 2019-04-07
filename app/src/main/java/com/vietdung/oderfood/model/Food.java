@@ -7,25 +7,62 @@ import com.google.gson.annotations.SerializedName;
 
 public class Food implements Parcelable{
     @SerializedName("idtypefood")
-    private String idtypefood;
+    private int idtypefood;
     @SerializedName("image")
     private String image;
     @SerializedName("price")
-    private String price;
+    private Integer price;
     @SerializedName("name")
     private String name;
     @SerializedName("information")
     private String information;
     @SerializedName("id")
-    private String id;
+    private int id;
+    @SerializedName("PERCENTKM")
+    private int percentKM;
+
+    public int getPercentKM() {
+        return percentKM;
+    }
+
+    public void setPercentKM(int percentKM) {
+        this.percentKM = percentKM;
+    }
+
+    private int quality;
+
+    private byte[] mImageCart;
+
+    public byte[] getImageCart() {
+        return mImageCart;
+    }
+
+    public void setImageCart(byte[] imageCart) {
+        mImageCart = imageCart;
+    }
+
+    public Food() {
+    }
+
+    public int getQuality() {
+        return quality;
+    }
+
+    public void setQuality(int quality) {
+        this.quality = quality;
+    }
+
+    public static Creator<Food> getCREATOR() {
+        return CREATOR;
+    }
 
     protected Food(Parcel in) {
-        idtypefood = in.readString();
+        idtypefood = in.readInt();
         image = in.readString();
-        price = in.readString();
+        price = in.readInt();
         name = in.readString();
         information = in.readString();
-        id = in.readString();
+        id = in.readInt();
     }
 
     public static final Creator<Food> CREATOR = new Creator<Food>() {
@@ -40,11 +77,11 @@ public class Food implements Parcelable{
         }
     };
 
-    public String getIdtypefood() {
+    public int getIdtypefood() {
         return idtypefood;
     }
 
-    public void setIdtypefood(String idtypefood) {
+    public void setIdtypefood(int idtypefood) {
         this.idtypefood = idtypefood;
     }
 
@@ -56,11 +93,11 @@ public class Food implements Parcelable{
         this.image = image;
     }
 
-    public String getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
@@ -80,11 +117,11 @@ public class Food implements Parcelable{
         this.information = information;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -95,11 +132,11 @@ public class Food implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(idtypefood);
+        parcel.writeInt(idtypefood);
         parcel.writeString(image);
-        parcel.writeString(price);
+        parcel.writeInt(price);
         parcel.writeString(name);
         parcel.writeString(information);
-        parcel.writeString(id);
+        parcel.writeInt(id);
     }
 }
