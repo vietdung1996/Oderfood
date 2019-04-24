@@ -1,6 +1,5 @@
 package com.vietdung.oderfood.ui.search;
 
-import android.nfc.NfcAdapter;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,7 +12,7 @@ import android.view.MenuItem;
 import com.vietdung.oderfood.R;
 import com.vietdung.oderfood.adapter.FoodAdapter;
 import com.vietdung.oderfood.common.Common;
-import com.vietdung.oderfood.model.Food;
+import com.vietdung.oderfood.model.ObjectClass.Food;
 import com.vietdung.oderfood.remote.APIOderFood;
 
 import java.util.ArrayList;

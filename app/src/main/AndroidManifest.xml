@@ -4,6 +4,8 @@
     package="com.vietdung.oderfood">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.Manifest.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.search.SearchActivity"></activity>
+        <activity
+            android:name=".ui.fooddetails.comment.AddCommentActivity"
+            android:theme="@style/Base.Theme.AppCompat.Dialog" />
+        <activity android:name=".ui.search.SearchActivity" />
         <activity android:name=".ui.cart.CartActivity" />
         <activity android:name=".ui.home.HomeActivity">
             <intent-filter>
@@ -30,7 +35,12 @@
         <activity
             android:name=".ui.cart.CartActivity"
             tools:ignore="DuplicateActivity" />
-        <activity android:name=".ui.search.SearchActivity"
+        <activity
+            android:name=".ui.search.SearchActivity"
+            tools:ignore="DuplicateActivity" />
+        <activity
+            android:name=".ui.fooddetails.comment.AddCommentActivity"
+            android:theme="@style/Base.Theme.AppCompat.Dialog"
             tools:ignore="DuplicateActivity" />
     </application>
 

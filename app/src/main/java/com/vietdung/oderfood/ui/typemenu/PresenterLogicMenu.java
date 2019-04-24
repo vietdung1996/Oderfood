@@ -1,8 +1,6 @@
 package com.vietdung.oderfood.ui.typemenu;
 
-import android.util.Log;
-
-import com.vietdung.oderfood.model.TypeFood;
+import com.vietdung.oderfood.model.ObjectClass.TypeFood;
 import com.vietdung.oderfood.remote.APIOderFood;
 
 import java.util.List;

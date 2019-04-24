@@ -1,11 +1,10 @@
 package com.vietdung.oderfood.ui.menu;
 
-import com.vietdung.oderfood.model.Food;
+import com.vietdung.oderfood.model.ObjectClass.Food;
 import com.vietdung.oderfood.remote.APIOderFood;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;

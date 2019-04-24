@@ -10,7 +10,7 @@ import android.view.View;
 import com.vietdung.oderfood.R;
 import com.vietdung.oderfood.adapter.TypeFoodAdapter;
 import com.vietdung.oderfood.common.Common;
-import com.vietdung.oderfood.model.TypeFood;
+import com.vietdung.oderfood.model.ObjectClass.TypeFood;
 import com.vietdung.oderfood.remote.APIOderFood;
 
 import java.util.ArrayList;

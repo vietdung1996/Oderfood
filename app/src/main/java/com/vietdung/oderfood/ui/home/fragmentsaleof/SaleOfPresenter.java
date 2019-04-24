@@ -1,9 +1,7 @@
 package com.vietdung.oderfood.ui.home.fragmentsaleof;
 
-import android.util.Log;
-
-import com.vietdung.oderfood.model.Food;
-import com.vietdung.oderfood.model.SaleOf;
+import com.vietdung.oderfood.model.ObjectClass.Food;
+import com.vietdung.oderfood.model.ObjectClass.SaleOf;
 import com.vietdung.oderfood.remote.APIOderFood;
 
 import java.util.ArrayList;

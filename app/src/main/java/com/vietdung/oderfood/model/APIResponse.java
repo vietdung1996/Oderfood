@@ -1,5 +1,7 @@
 package com.vietdung.oderfood.model;
 
+import com.vietdung.oderfood.model.ObjectClass.User;
+
 public class APIResponse {
 
     private boolean error;

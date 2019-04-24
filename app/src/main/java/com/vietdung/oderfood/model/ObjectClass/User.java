@@ -1,4 +1,4 @@
-package com.vietdung.oderfood.model;
+package com.vietdung.oderfood.model.ObjectClass;
 
 public class User {
     public String name ;

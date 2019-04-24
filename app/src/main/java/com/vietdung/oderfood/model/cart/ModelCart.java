@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.vietdung.oderfood.model.Food;
+import com.vietdung.oderfood.model.ObjectClass.Food;
 
 import java.util.ArrayList;
 import java.util.List;

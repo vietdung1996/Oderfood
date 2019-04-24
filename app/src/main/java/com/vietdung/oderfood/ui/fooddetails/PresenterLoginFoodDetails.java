@@ -2,7 +2,7 @@ package com.vietdung.oderfood.ui.fooddetails;
 
 import android.content.Context;
 
-import com.vietdung.oderfood.model.Food;
+import com.vietdung.oderfood.model.ObjectClass.Food;
 import com.vietdung.oderfood.model.cart.ModelCart;
 
 import java.util.List;

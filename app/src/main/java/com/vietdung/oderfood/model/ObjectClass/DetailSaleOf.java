@@ -1,4 +1,4 @@
-package com.vietdung.oderfood.model;
+package com.vietdung.oderfood.model.ObjectClass;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -2,7 +2,7 @@ package com.vietdung.oderfood.ui.fooddetails;
 
 import android.content.Context;
 
-import com.vietdung.oderfood.model.Food;
+import com.vietdung.oderfood.model.ObjectClass.Food;
 
 public interface PresenterFoodDatails {
     interface View {

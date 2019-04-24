@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.vietdung.oderfood.R;
-import com.vietdung.oderfood.model.TypeFood;
+import com.vietdung.oderfood.model.ObjectClass.TypeFood;
 import com.vietdung.oderfood.ui.menu.MenuActivity;
 
 import java.util.List;

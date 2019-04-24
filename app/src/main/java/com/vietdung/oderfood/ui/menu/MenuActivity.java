@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.vietdung.oderfood.R;
 import com.vietdung.oderfood.adapter.FoodAdapter;
 import com.vietdung.oderfood.common.Common;
-import com.vietdung.oderfood.model.Food;
+import com.vietdung.oderfood.model.ObjectClass.Food;
 import com.vietdung.oderfood.remote.APIOderFood;
 import com.vietdung.oderfood.ui.fooddetails.PresenterLoginFoodDetails;
 

@@ -2,9 +2,11 @@ package com.vietdung.oderfood.remote;
 
 
 import com.vietdung.oderfood.model.APIResponse;
-import com.vietdung.oderfood.model.Food;
-import com.vietdung.oderfood.model.SaleOf;
-import com.vietdung.oderfood.model.TypeFood;
+import com.vietdung.oderfood.model.ObjectClass.Comment;
+import com.vietdung.oderfood.model.ObjectClass.Food;
+import com.vietdung.oderfood.model.ObjectClass.SaleOf;
+import com.vietdung.oderfood.model.ObjectClass.TypeFood;
+import com.vietdung.oderfood.model.Respone.Response;
 
 import java.util.List;
 import java.util.Map;
@@ -35,9 +37,16 @@ public interface APIOderFood {
 
     @GET("getfoodsaleof.php")
     Call<List<SaleOf>> getFoodSaleOf();
+
     @FormUrlEncoded
     @POST("search.php")
     Call<List<Food>> getFoodSearch(@Query("page") Integer page, @FieldMap Map<String, String> params);
 
+    @FormUrlEncoded
+    @POST("comment.php")
+    Call<String> addComment(@FieldMap Map<String, String> params);
 
+    @FormUrlEncoded
+    @POST("getcomment.php")
+    Call<List<Comment>> getComment(@FieldMap Map<String, String> params);
 }

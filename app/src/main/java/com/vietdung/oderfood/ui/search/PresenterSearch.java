@@ -2,7 +2,7 @@ package com.vietdung.oderfood.ui.search;
 
 import android.util.Log;
 
-import com.vietdung.oderfood.model.Food;
+import com.vietdung.oderfood.model.ObjectClass.Food;
 import com.vietdung.oderfood.remote.APIOderFood;
 
 import java.util.HashMap;

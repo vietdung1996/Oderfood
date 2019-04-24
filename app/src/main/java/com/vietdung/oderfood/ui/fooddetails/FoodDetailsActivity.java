@@ -17,7 +17,7 @@ import com.bumptech.glide.Glide;
 import com.vietdung.oderfood.R;
 import com.vietdung.oderfood.adapter.DetailPagerAdapter;
 import com.vietdung.oderfood.adapter.FoodAdapter;
-import com.vietdung.oderfood.model.Food;
+import com.vietdung.oderfood.model.ObjectClass.Food;
 import com.vietdung.oderfood.model.cart.ModelCart;
 import com.vietdung.oderfood.ui.fooddetails.inforfragment.FragmentInformation;
 import com.vietdung.oderfood.ui.fooddetails.reviewfragment.FragmentReview;

@@ -11,7 +11,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.vietdung.oderfood.R;
-import com.vietdung.oderfood.model.Food;
+import com.vietdung.oderfood.model.ObjectClass.Food;
 import com.vietdung.oderfood.ui.fooddetails.FoodDetailsActivity;
 
 import java.text.DecimalFormat;

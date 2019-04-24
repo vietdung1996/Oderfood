@@ -1,6 +1,6 @@
 package com.vietdung.oderfood.ui.typemenu;
 
-import com.vietdung.oderfood.model.TypeFood;
+import com.vietdung.oderfood.model.ObjectClass.TypeFood;
 
 import java.util.List;
 

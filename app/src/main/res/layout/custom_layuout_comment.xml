@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_10">
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textStyle="bold"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RatingBar
+            android:id="@+id/rating_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            style="?android:ratingBarStyleSmall"
+            android:layout_marginTop="@dimen/dp_5"
+            />
+
+        <TextView
+            android:id="@+id/text_time_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="@dimen/dp_10"
+            android:gravity="right"
+            android:text="@string/app_name"
+            android:textSize="12sp"
+            android:layout_weight="10"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_device"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Được đăng bởi"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:layout_marginTop="@dimen/dp_5"
+        />
+    <TextView
+        android:id="@+id/text_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nooij dung"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:layout_marginTop="@dimen/dp_5"
+        />
+    
+    
+    
+
+</LinearLayout>

@@ -1,4 +1,4 @@
-package com.vietdung.oderfood.model;
+package com.vietdung.oderfood.model.ObjectClass;
 
 import android.os.Parcel;
 import android.os.Parcelable;

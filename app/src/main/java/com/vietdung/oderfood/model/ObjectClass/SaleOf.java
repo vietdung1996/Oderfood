@@ -1,6 +1,7 @@
-package com.vietdung.oderfood.model;
+package com.vietdung.oderfood.model.ObjectClass;
 
 import com.google.gson.annotations.SerializedName;
+import com.vietdung.oderfood.model.ObjectClass.Food;
 
 import java.util.List;
 
