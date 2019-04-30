@@ -3,6 +3,7 @@ package com.vietdung.oderfood.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Paint;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -122,7 +123,18 @@ public class CartFoodAdapter extends RecyclerView.Adapter<CartFoodAdapter.ViewHo
             mTextNameFood.setText(food.getName());
             NumberFormat numberFormat = new DecimalFormat("###,###");
             String price = numberFormat.format(food.getPrice());
-            mTextPriceFood.setText(price + " VNĐ");
+            if(food.getPercentKM()!=0){
+                String priceSaleOf = numberFormat.format(food.getPrice()-food.getPrice()*food.getPercentKM()/100);
+                mTextPriceFood.setText(priceSaleOf + " VNĐ");
+//                mTextPercent.setText("-" +food.getPercentKM()+"%");
+//                mTextPriceSaleOf.setPaintFlags(mTextPriceFood.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
+//                mTextPriceSaleOf.setText(price+" VND");
+            }else{
+                mTextPriceFood.setText(price);
+                mTextPriceFood.setText(price + " VNĐ");
+            }
+
+            //mTextPriceFood.setText(price + " VNĐ");
             Bitmap bitmap = BitmapFactory.decodeByteArray(food.getImageCart(), 0, food.getImageCart().length);
             mImageFood.setImageBitmap(bitmap);
             mTextQuality.setText(String.valueOf(food.getQuality()));

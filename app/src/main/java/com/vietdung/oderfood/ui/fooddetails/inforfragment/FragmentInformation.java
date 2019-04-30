@@ -1,5 +1,6 @@
 package com.vietdung.oderfood.ui.fooddetails.inforfragment;
 
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -43,7 +44,16 @@ public class FragmentInformation extends Fragment {
         mTextViewName.setText(mFood.getName());
         NumberFormat numberFormat = new DecimalFormat("###,###");
         String price = numberFormat.format(mFood.getPrice());
-        mTextPriceFood.setText(price + " VNĐ");
+        if(mFood.getPercentKM()!=0){
+            String priceSaleOf = numberFormat.format(mFood.getPrice()-mFood.getPrice()*mFood.getPercentKM()/100);
+            mTextPriceFood.setText(priceSaleOf + " VNĐ");
+//            mTextPercent.setText("-" +food.getPercentKM()+"%");
+//            mTextPriceSaleOf.setPaintFlags(mTextPriceFood.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
+//            mTextPriceSaleOf.setText(price+" VND");
+        }else{
+            mTextPriceFood.setText(price);
+
+        }
         mTextViewDescription.setText(mFood.getInformation());
     }
 

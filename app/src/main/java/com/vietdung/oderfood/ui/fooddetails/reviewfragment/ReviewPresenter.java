@@ -34,9 +34,7 @@ public class ReviewPresenter implements ReviewContract.Presenter {
         mAPIOderFood.getComment(param).enqueue(new Callback<List<Comment>>() {
             @Override
             public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
-
                 mComments = response.body();
-                //Log.d("truewhy", "onFailure: " + mComments.get(0).getContent());
                 mView.showComment(mComments);
             }
 

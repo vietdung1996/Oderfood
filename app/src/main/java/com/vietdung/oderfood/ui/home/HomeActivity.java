@@ -14,7 +14,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +23,7 @@ import android.widget.TextView;
 import com.vietdung.oderfood.R;
 import com.vietdung.oderfood.adapter.ViewPagerAdapter;
 import com.vietdung.oderfood.ui.cart.CartActivity;
+import com.vietdung.oderfood.ui.favorite.FavoriteActivity;
 import com.vietdung.oderfood.ui.fooddetails.PresenterLoginFoodDetails;
 import com.vietdung.oderfood.ui.search.SearchActivity;
 import com.vietdung.oderfood.ui.typemenu.TypeMenuActivity;
@@ -138,7 +138,7 @@ public class HomeActivity extends AppCompatActivity implements AppBarLayout.OnOf
             try {
                 MenuItem itSearch = mMenu.findItem(R.id.it_search);
                 itSearch.setVisible(false);
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
@@ -154,6 +154,10 @@ public class HomeActivity extends AppCompatActivity implements AppBarLayout.OnOf
             case R.id.nav_menu:
                 Intent intent = new Intent(HomeActivity.this, TypeMenuActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.nav_favorite:
+                Intent intent1 = new Intent(this, FavoriteActivity.class);
+                startActivity(intent1);
                 break;
             case R.id.nav_history:
                 break;

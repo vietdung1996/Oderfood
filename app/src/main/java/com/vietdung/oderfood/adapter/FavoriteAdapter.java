@@ -23,14 +23,14 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.List;
 
-public class FoodSaleOfAdapter extends RecyclerView.Adapter<FoodSaleOfAdapter.ViewHolder> {
+public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
     private Context mContext;
     private List<Food> mFoods;
     private LayoutInflater mInflater;
     public static String PARA_KEY = "12345";
     public static String INTENT_KEY ="321";
 
-    public FoodSaleOfAdapter(Context context, List<Food> foodList) {
+    public FavoriteAdapter(Context context, List<Food> foodList) {
         mContext = context;
         mFoods = foodList;
         mInflater = LayoutInflater.from(mContext);
@@ -94,7 +94,6 @@ public class FoodSaleOfAdapter extends RecyclerView.Adapter<FoodSaleOfAdapter.Vi
                 mTextPriceSaleOf.setText(price+" VND");
             }else{
                 mTextPriceFood.setText(price);
-                mTextPriceFood.setText(price + " VNĐ");
             }
             Glide.with(mContext).load(food.getImage())
                     .placeholder(R.drawable.load1)

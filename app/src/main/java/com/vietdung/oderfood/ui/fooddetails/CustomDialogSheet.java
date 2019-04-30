@@ -70,6 +70,7 @@ public class CustomDialogSheet extends BottomSheetDialogFragment implements View
         switch (view.getId()) {
             case R.id.btn_show_cart:
                 startActivity(CartActivity.getCartIntent(getContext(), mFood));
+                dismiss();
                 break;
         }
     }

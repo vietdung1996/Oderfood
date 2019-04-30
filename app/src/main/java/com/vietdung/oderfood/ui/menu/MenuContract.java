@@ -12,5 +12,6 @@ public interface MenuContract {
 
     interface Presenter{
         public List<Food> loadFood();
+        public List<Food> loadFoodByPrice(String sort);
     }
 }

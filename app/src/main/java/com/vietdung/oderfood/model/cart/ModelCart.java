@@ -25,6 +25,7 @@ public class ModelCart {
         contentValues.put(DataFood.TB_CART_PRICE, food.getPrice());
         contentValues.put(DataFood.TB_CART_IMAGE, food.getImageCart());
         contentValues.put(DataFood.TB_CART_QUALITY,food.getQuality());
+        contentValues.put(DataFood.TB_CART_PERCENT,food.getPercentKM());
         long id = mDatabase.insert(DataFood.TB_CART, null, contentValues);
         if (id > 0) {
             return true;
@@ -44,12 +45,14 @@ public class ModelCart {
             int price = cursor.getInt(cursor.getColumnIndex(DataFood.TB_CART_PRICE));
             byte[] image = cursor.getBlob(cursor.getColumnIndex(DataFood.TB_CART_IMAGE));
             int quality = cursor.getInt(cursor.getColumnIndex(DataFood.TB_CART_QUALITY));
+            int percent = cursor.getInt(cursor.getColumnIndex(DataFood.TB_CART_PERCENT));
             Food food = new Food();
             food.setId(id);
             food.setName(name);
             food.setImageCart(image);
             food.setPrice(price);
             food.setQuality(quality);
+            food.setPercentKM(percent);
             foods.add(food);
             cursor.moveToNext();
         }

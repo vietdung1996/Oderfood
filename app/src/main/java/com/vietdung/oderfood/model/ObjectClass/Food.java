@@ -31,6 +31,7 @@ public class Food implements Parcelable{
 
     private int quality;
 
+
     private byte[] mImageCart;
 
     public byte[] getImageCart() {
@@ -63,6 +64,7 @@ public class Food implements Parcelable{
         name = in.readString();
         information = in.readString();
         id = in.readInt();
+        percentKM = in.readInt();
     }
 
     public static final Creator<Food> CREATOR = new Creator<Food>() {
@@ -138,5 +140,6 @@ public class Food implements Parcelable{
         parcel.writeString(name);
         parcel.writeString(information);
         parcel.writeInt(id);
+        parcel.writeInt(percentKM );
     }
 }

@@ -22,7 +22,7 @@ import com.vietdung.oderfood.remote.APIOderFood;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FragmentPromotion extends Fragment implements SaleOfContract.View{
+public class FragmentSaleOf extends Fragment implements SaleOfContract.View{
     private LinearLayout mLinearImage;
     private RecyclerView mRecyclerSaleOf;
     private SaleOfContract.Presenter mPresenter;

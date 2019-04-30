@@ -1,9 +1,10 @@
 package com.vietdung.oderfood.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.vietdung.oderfood.model.ObjectClass.User;
 
 public class APIResponse {
-
+   @SerializedName("error")
     private boolean error;
     private String uid;
     public User user;

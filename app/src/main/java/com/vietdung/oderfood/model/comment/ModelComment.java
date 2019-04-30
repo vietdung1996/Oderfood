@@ -49,16 +49,14 @@ public class ModelComment {
             @Override
             public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
                 mComments = response.body();
-                Log.d("truewhy", "onFailure: " + mComments.get(0).getContent());
-
+              //  Log.d("truewhy", "onFailure: " + mComments.get(0).getContent());
             }
 
             @Override
             public void onFailure(Call<List<Comment>> call, Throwable t) {
-
             }
         });
-        Log.d("truewhy1", "onFailure: " + mComments);
+       // Log.d("truewhy1", "onFailure: " + mComments);
         return mComments;
     }
 }

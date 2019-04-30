@@ -8,9 +8,11 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.vietdung.oderfood.R;
 import com.vietdung.oderfood.adapter.FoodAdapter;
+import com.vietdung.oderfood.adapter.FoodSaleOfAdapter;
 import com.vietdung.oderfood.common.Common;
 import com.vietdung.oderfood.model.ObjectClass.Food;
 import com.vietdung.oderfood.remote.APIOderFood;
@@ -22,7 +24,7 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
     private Toolbar mToolbar;
     private RecyclerView mRecyclerSearch;
     private List<Food> mFoods;
-    private FoodAdapter mFoodAdapter;
+    private FoodSaleOfAdapter mFoodAdapter;
     private SearchContract.Presenter mPresenter;
     private APIOderFood mAPIOderFood;
 
@@ -39,13 +41,24 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     private void initView() {
         mToolbar = findViewById(R.id.tool_bar_search);
         mRecyclerSearch = findViewById(R.id.recycler_search);
         mFoods = new ArrayList<>();
-        mFoodAdapter = new FoodAdapter(getApplicationContext(),mFoods);
+        mFoodAdapter = new FoodSaleOfAdapter(getApplicationContext(),mFoods);
         mRecyclerSearch.setAdapter(mFoodAdapter);
         mAPIOderFood = Common.getAPI();
         mPresenter = new PresenterSearch(this,mAPIOderFood);

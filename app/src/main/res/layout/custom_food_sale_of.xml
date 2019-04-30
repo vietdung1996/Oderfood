@@ -12,7 +12,8 @@
         android:id="@+id/linearlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/colorWhite">
         <ImageView
             android:id="@+id/image_food"
             android:layout_width="match_parent"
@@ -31,29 +32,30 @@
                 android:id="@+id/text_percent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:text="-10%"
+                android:textSize="@dimen/sp_14"
                 android:gravity="right"
                 android:textColor="@color/colorPink"
-                android:layout_marginRight="@dimen/dp_10"/>
+                android:layout_marginRight="@dimen/dp_10"
+                />
             <TextView
                 android:id="@+id/text_name_food"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Canh cua"
-                android:textSize="20sp"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/sp_20"
                 />
             <TextView
                 android:id="@+id/text_price_food"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/app_name"
+                android:textColor="@color/colorBlack"
                 android:layout_marginTop="@dimen/dp_5"/>
             <TextView
                 android:id="@+id/text_price_sale_of"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_5"/>
+                android:layout_marginTop="@dimen/dp_5"
+                android:textColor="@color/colorBlack"/>
         </LinearLayout>
 
     </LinearLayout>

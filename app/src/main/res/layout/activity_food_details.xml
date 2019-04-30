@@ -78,7 +78,8 @@
             android:layout_marginRight="@dimen/dp_5"
             android:src="@drawable/ic_favorite_white_24dp"
             app:layout_anchor="@id/app_bar_layout_details"
-            app:layout_anchorGravity="bottom|right" />
+            app:layout_anchorGravity="bottom|right"
+            />
 
     </android.support.design.widget.CoordinatorLayout>
 

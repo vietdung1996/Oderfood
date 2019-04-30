@@ -4,16 +4,19 @@ import android.content.Context;
 
 import com.vietdung.oderfood.model.ObjectClass.Food;
 import com.vietdung.oderfood.model.cart.ModelCart;
+import com.vietdung.oderfood.model.cart.ModelFavorite;
 
 import java.util.List;
 
-public class PresenterLoginFoodDetails implements PresenterFoodDatails.Presenter {
-    PresenterFoodDatails.View mView;
+public class PresenterLoginFoodDetails implements FoodDatailsContract.Presenter {
+    FoodDatailsContract.View mView;
     ModelCart mModelCart;
+    ModelFavorite mModelFavorite;
 
-    public PresenterLoginFoodDetails(PresenterFoodDatails.View view) {
+    public PresenterLoginFoodDetails(FoodDatailsContract.View view) {
         mView = view;
         mModelCart = new ModelCart();
+        mModelFavorite = new ModelFavorite();
     }
 
     public PresenterLoginFoodDetails() {
@@ -30,6 +33,17 @@ public class PresenterLoginFoodDetails implements PresenterFoodDatails.Presenter
             mView.addCartFailure();
         }
 
+    }
+
+    @Override
+    public void addFavorite(Food food, Context context) {
+        mModelFavorite.conectSQL(context);
+        boolean check = mModelFavorite.addFavorite(food);
+        if (check) {
+            mView.addFavoriteSuccess();
+        } else {
+            mView.addFavoriteFailure();
+        }
     }
 
     public int countItemCart(Context context){

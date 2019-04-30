@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,7 +15,10 @@ import com.vietdung.oderfood.adapter.CartFoodAdapter;
 import com.vietdung.oderfood.adapter.UpdateListener;
 import com.vietdung.oderfood.model.ObjectClass.Food;
 import com.vietdung.oderfood.model.cart.ModelCart;
+import com.vietdung.oderfood.ui.pay.PayActivity;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.List;
 
 public class CartActivity extends AppCompatActivity implements CartContract.View,
@@ -49,18 +51,27 @@ public class CartActivity extends AppCompatActivity implements CartContract.View
     private void updateTextPrice() {
         mFoods = mModelCart.getFoodCart();
         int mPriceOrder = 0;
-        for(int i =0;i<mFoods.size();i++){
-            mPriceOrder += mFoods.get(i).getPrice()*mFoods.get(i).getQuality();
-            Log.d("mPrice", "updateTextPrice: "+mPriceOrder+" "+mFoods.get(i).getQuality());
+        NumberFormat numberFormat = new DecimalFormat("###,###");
+        for (int i = 0; i < mFoods.size(); i++) {
+            if (mFoods.get(i).getPercentKM() != 0) {
+                int priceSaleOf = (mFoods.get(i).getPrice()
+                        - mFoods.get(i).getPrice() * mFoods.get(i).getPercentKM() / 100);
+                mPriceOrder += priceSaleOf * mFoods.get(i).getQuality();
+            } else {
+                mPriceOrder += mFoods.get(i).getPrice() * mFoods.get(i).getQuality();
+            }
         }
+        // mPriceOrder += mFoods.get(i).getPrice() * mFoods.get(i).getQuality();
+        mTextPriceOrder.setText("Tổng tiền: " + String.valueOf(mPriceOrder) + " VNĐ");
 
-        mTextPriceOrder.setText("Tổng tiền: "+String.valueOf(mPriceOrder)+" VNĐ");
     }
+
 
     @Override
     protected void onRestart() {
         super.onRestart();
         updateTextPrice();
+        mFoodAdapter.notifyDataSetChanged();
     }
 
     private void setToolbar() {
@@ -93,8 +104,10 @@ public class CartActivity extends AppCompatActivity implements CartContract.View
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.button_order:
+                Intent intent = new Intent(CartActivity.this, PayActivity.class);
+                startActivity(intent);
                 break;
         }
     }
