@@ -23,14 +23,16 @@
         <activity android:name=".ui.search.SearchActivity" />
         <activity android:name=".ui.cart.CartActivity" />
         <activity android:name=".ui.home.HomeActivity">
+
+        </activity>
+        <activity android:name=".ui.signin.RegisterActivity" />
+        <activity android:name=".ui.login.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.signin.RegisterActivity" />
-        <activity android:name=".ui.login.MainActivity" />
         <activity android:name=".ui.typemenu.TypeMenuActivity" />
         <activity android:name=".ui.menu.MenuActivity" />
         <activity android:name=".ui.fooddetails.FoodDetailsActivity" />

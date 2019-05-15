@@ -1,7 +1,9 @@
 package com.vietdung.oderfood.ui.login;
 
 import android.animation.Animator;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.content.ContextCompat;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 
 import com.vietdung.oderfood.common.Common;
 import com.vietdung.oderfood.R;
+import com.vietdung.oderfood.ui.home.HomeActivity;
 import com.vietdung.oderfood.ui.signin.RegisterActivity;
 import com.vietdung.oderfood.remote.APIOderFood;
 
@@ -54,14 +57,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mTextOder.setVisibility(GONE);
-                mProgressLoading.setVisibility(GONE);
-                rootView.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.colorSplashText));
-                mImageFoodIcon.setImageResource(R.drawable.icon_oder);
-                startAnimation();
+                SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("login", Context.MODE_PRIVATE);
+                String name = sharedPreferences.getString("nameuser","");
+                String email = sharedPreferences.getString("email","");
+                if(email.equals("")&&name.equals("")){
+                    mTextOder.setVisibility(GONE);
+                    mProgressLoading.setVisibility(GONE);
+                    rootView.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.colorSplashText));
+                    mImageFoodIcon.setImageResource(R.drawable.icon_oder);
+                    startAnimation();
+                }else{
+                    Intent intent = new Intent(MainActivity.this,HomeActivity.class);
+                    startActivity(intent);
+                }
+
 
             }
-        }, 5000);
+        }, 3000);
     }
 
     private void initView() {
@@ -77,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mService = Common.getAPI();
         btnLogin = findViewById(R.id.loginButton);
         btnLogin.setOnClickListener(this);
-        mLogicLogin = new PresenterLogicLogin(this, mService);
+        mLogicLogin = new PresenterLogicLogin(this, mService,getApplicationContext());
 
     }
 
@@ -127,6 +139,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void LoginSuccess() {
         Toast.makeText(MainActivity.this, "Login Success !", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
     }
 
     @Override

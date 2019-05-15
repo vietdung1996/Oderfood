@@ -1,5 +1,7 @@
 package com.vietdung.oderfood.ui.menu;
 
+import android.util.Log;
+
 import com.vietdung.oderfood.model.ObjectClass.Food;
 import com.vietdung.oderfood.remote.APIOderFood;
 
@@ -47,11 +49,13 @@ public class PresenterMenu implements MenuContract.Presenter {
         param.put("idtypefood",String.valueOf(mView.getIdtypefood()));
         param.put("limit", String.valueOf(0));
         param.put("sort",sort);
+        Log.d("sap xep", "onClick: giam dan" +sort);
         mAPIOderFood.getFoodByPrice(param).enqueue(new Callback<List<Food>>() {
             @Override
             public void onResponse(Call<List<Food>> call, Response<List<Food>> response) {
                 mFoods = response.body();
                 mView.displayMenuList(mFoods);
+                Log.d("sap xep", "onClick: giam dan" );
             }
 
             @Override

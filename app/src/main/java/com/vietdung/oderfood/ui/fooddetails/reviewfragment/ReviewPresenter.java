@@ -1,7 +1,5 @@
 package com.vietdung.oderfood.ui.fooddetails.reviewfragment;
 
-import android.util.Log;
-
 import com.vietdung.oderfood.model.ObjectClass.Comment;
 import com.vietdung.oderfood.model.comment.ModelComment;
 import com.vietdung.oderfood.remote.APIOderFood;
@@ -14,11 +12,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ReviewPresenter implements ReviewContract.Presenter {
+    int numberStar = 0;
     private ReviewContract.View mView;
     private APIOderFood mAPIOderFood;
     private ModelComment mModelComment;
     private List<Comment> mComments;
     private List<Comment> mComments1;
+
 
     public ReviewPresenter(ReviewContract.View view, APIOderFood APIOderFood) {
         mView = view;
@@ -27,7 +27,7 @@ public class ReviewPresenter implements ReviewContract.Presenter {
     }
 
     @Override
-    public void loadReview(int idFood, int limit) {
+    public int loadReview(int idFood, int limit) {
         HashMap<String, String> param = new HashMap<String, String>();
         param.put("idfood", String.valueOf(idFood));
         param.put("limmit", String.valueOf(limit));
@@ -35,7 +35,9 @@ public class ReviewPresenter implements ReviewContract.Presenter {
             @Override
             public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
                 mComments = response.body();
-                mView.showComment(mComments);
+                getNumber();
+
+                mView.showComment(mComments, numberStar);
             }
 
             @Override
@@ -43,8 +45,19 @@ public class ReviewPresenter implements ReviewContract.Presenter {
 
             }
         });
+        return numberStar;
+    }
+
+    public void getNumber() {
+        if(mComments.size()>0){
+            for (int i = 0; i < mComments.size(); i++) {
+                numberStar += mComments.get(i).getStar();
+            }
+            numberStar = numberStar / (mComments.size());
+        }
 
     }
+
     @Override
     public List<Comment> loadMoreReview(int idFood, int limit) {
         HashMap<String, String> param = new HashMap<String, String>();
@@ -54,7 +67,8 @@ public class ReviewPresenter implements ReviewContract.Presenter {
             @Override
             public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
                 mComments1 = response.body();
-                mView.showComment(mComments1);
+                getNumber();
+                mView.showComment(mComments1, numberStar);
             }
 
             @Override
@@ -62,6 +76,6 @@ public class ReviewPresenter implements ReviewContract.Presenter {
 
             }
         });
-        return  mComments1;
+        return mComments1;
     }
 }

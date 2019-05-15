@@ -51,13 +51,20 @@ public class ModelFavorite {
             foods.add(food);
             cursor.moveToNext();
         }
+        cursor.close();
         return foods;
     }
 
-    public boolean checkFood(Food food) {
-        String query = "SELECT EXISTS(SELECT 1 FROM " + DataFood.TB_FAVORITE + " WHERE "
-                + DataFood.TB_FAVORTE_ID + " = " + food.getId();
-       // mDatabase.rawQuery(query,null);
+    public boolean checkFoodExist(Food food) {
+        String query = "SELECT * FROM " + DataFood.TB_FAVORITE + " WHERE "
+                + DataFood.TB_FAVORTE_ID + " = '" + food.getId() + "'";
+        Cursor cursor = mDatabase.rawQuery(query, null);
+        if (cursor != null) {
+            if (cursor.getCount() > 0) {
+                cursor.close();
+                return true;
+            }
+        }
         return false;
     }
 

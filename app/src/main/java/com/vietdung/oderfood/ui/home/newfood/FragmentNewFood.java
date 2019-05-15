@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +18,7 @@ import com.vietdung.oderfood.model.ObjectClass.Food;
 import com.vietdung.oderfood.model.ObjectClass.ILoadMore;
 import com.vietdung.oderfood.model.ObjectClass.LoadMoreScroll;
 import com.vietdung.oderfood.remote.APIOderFood;
+import com.vietdung.oderfood.ui.fooddetails.reviewfragment.FragmentReview;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +51,7 @@ public class FragmentNewFood extends Fragment implements NewFoodContract.View, I
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(linearLayoutManager);
-        mRecyclerView.addOnScrollListener(new LoadMoreScroll(linearLayoutManager,this));
+        mRecyclerView.addOnScrollListener(new LoadMoreScroll(linearLayoutManager, this));
         mPresenter.loadNewFood(0);
 
     }
@@ -59,17 +59,13 @@ public class FragmentNewFood extends Fragment implements NewFoodContract.View, I
 
     @Override
     public void showFoods(List<Food> foods) {
-       // mFoods = foods;
         mFoods.addAll(foods);
-       // Log.d("sumitem", "LoadMore: "+mFoods.size());
         mSaleOfAdapter.notifyDataSetChanged();
-        //mSaleOfAdapter.setFoods(foods);
+
     }
 
     @Override
     public void LoadMore(int sumItem) {
-        mPresenter.loadMoreNewFood(sumItem,mProgressBar);
-
-
+        mPresenter.loadMoreNewFood(sumItem, mProgressBar);
     }
 }

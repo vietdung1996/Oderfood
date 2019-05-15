@@ -1,12 +1,12 @@
 package com.vietdung.oderfood.ui.fooddetails.reviewfragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +21,7 @@ import com.vietdung.oderfood.model.ObjectClass.ILoadMore;
 import com.vietdung.oderfood.remote.APIOderFood;
 import com.vietdung.oderfood.ui.fooddetails.FoodDetailsActivity;
 import com.vietdung.oderfood.ui.fooddetails.comment.AddCommentActivity;
+import com.vietdung.oderfood.ui.fooddetails.inforfragment.FragmentInformation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,8 @@ public class FragmentReview extends Fragment implements ReviewContract.View, ILo
     private CommentAdapter mCommentAdapter;
     private RecyclerView mRecyclerReview;
     private Food mFood;
+    private NumberStarListerner mStarListerner;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -40,13 +43,9 @@ public class FragmentReview extends Fragment implements ReviewContract.View, ILo
         View view = inflater.inflate(R.layout.fragment_review_details, container, false);
         initView(view);
         setButton();
-        loadReview();
         return view;
     }
 
-    private void loadReview() {
-
-    }
 
     private void setButton() {
         mFood = FoodDetailsActivity.mFood;
@@ -54,11 +53,11 @@ public class FragmentReview extends Fragment implements ReviewContract.View, ILo
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), AddCommentActivity.class);
-                intent.putExtra(EXTRA_FOOD,mFood.getId());
+                intent.putExtra(EXTRA_FOOD, mFood.getId());
                 startActivity(intent);
             }
         });
-        mPresenter.loadReview(mFood.getId(),0);
+        mPresenter.loadReview(mFood.getId(), 0);
     }
 
     private void initView(View view) {
@@ -66,26 +65,24 @@ public class FragmentReview extends Fragment implements ReviewContract.View, ILo
         APIOderFood apiOderFood = Common.getAPI();
         mComments = new ArrayList<>();
         mRecyclerReview = view.findViewById(R.id.recycler_review);
-        mPresenter = new ReviewPresenter(this,apiOderFood);
-        mCommentAdapter = new CommentAdapter(mComments,getContext());
-
-
+        mPresenter = new ReviewPresenter(this, apiOderFood);
+        mCommentAdapter = new CommentAdapter(mComments, getContext());
     }
 
 
     @Override
-    public void showComment(List<Comment> comments) {
+    public void showComment(List<Comment> comments, int number) {
         mComments = comments;
         mCommentAdapter.setComments(comments);
+        mStarListerner = FragmentInformation.getInstance();
+        mStarListerner.getNumber(number);
         mRecyclerReview.setAdapter(mCommentAdapter);
     }
 
     @Override
     public void LoadMore(int sumItem) {
-        List<Comment> comments = mPresenter.loadMoreReview(mFood.getId(),sumItem);
+        List<Comment> comments = mPresenter.loadMoreReview(mFood.getId(), sumItem);
         mComments.addAll(comments);
         mCommentAdapter.notifyDataSetChanged();
-
-
     }
 }

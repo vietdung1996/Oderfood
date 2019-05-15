@@ -6,6 +6,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -133,9 +134,11 @@ public class MenuActivity extends AppCompatActivity implements MenuContract.View
             case R.id.button_sort:
                 if (mCheck) {
                     mPresenterMenu.loadFoodByPrice("ASC");
+                   // Log.d("sap xep", "onClick: giam dan" );
                     mCheck = false;
                 } else {
                     mPresenterMenu.loadFoodByPrice("DESC");
+                  //  Log.d("sap xep", "onClick: tang dan" );
                     mCheck = true;
                 }
                 break;

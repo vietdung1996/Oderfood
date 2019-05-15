@@ -14,7 +14,7 @@
 
     </de.hdodenhof.circleimageview.CircleImageView>
     <TextView
-        android:id="@+id/txtTen"
+        android:id="@+id/txtName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/guest"
@@ -28,7 +28,7 @@
         android:paddingBottom="5dp"/>
 
     <TextView
-        android:id="@+id/btntextlogout"
+        android:id="@+id/txtGmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Log out"
@@ -37,7 +37,7 @@
         android:textColor="#60fcc5"
         android:layout_alignLeft="@+id/profile"
         android:layout_alignStart="@+id/profile"
-        android:layout_below="@+id/txtTen" />
+        android:layout_below="@+id/txtName" />
 
 
 </RelativeLayout>

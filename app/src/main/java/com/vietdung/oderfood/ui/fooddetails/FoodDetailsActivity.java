@@ -9,6 +9,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,6 +21,7 @@ import com.vietdung.oderfood.adapter.DetailPagerAdapter;
 import com.vietdung.oderfood.adapter.FoodSaleOfAdapter;
 import com.vietdung.oderfood.model.ObjectClass.Food;
 import com.vietdung.oderfood.model.cart.ModelCart;
+import com.vietdung.oderfood.model.cart.ModelFavorite;
 import com.vietdung.oderfood.ui.fooddetails.inforfragment.FragmentInformation;
 import com.vietdung.oderfood.ui.fooddetails.reviewfragment.FragmentReview;
 
@@ -44,13 +46,22 @@ public class FoodDetailsActivity extends AppCompatActivity implements View.OnCli
         getInforFood();
         setContentView(R.layout.activity_food_details);
         initView();
-        //checkFavorite();
+        checkFavorite();
         addEvents();
     }
 
     private boolean checkFavorite() {
-        return true;
+        ModelFavorite modelFavorite = new ModelFavorite();
+        modelFavorite.conectSQL(getApplicationContext());
+        boolean check = modelFavorite.checkFoodExist(mFood);
+        Log.d("check", "checkFavorite: "+check);
+        if(check){
+            mActionButtonFavorite.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorWhite)));
+            mActionButtonFavorite.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_red_24dp));
+        }
+        return check;
     }
+
 
     @Override
     public void onClick(View view) {
@@ -61,9 +72,11 @@ public class FoodDetailsActivity extends AppCompatActivity implements View.OnCli
                 break;
             case R.id.float_button_favorite:
                 //setFood();
-                mActionButtonFavorite.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorWhite)));
-                mActionButtonFavorite.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_red_24dp));
-                mPresenter.addFavorite(mFood,getApplicationContext());
+                if(!checkFavorite()){
+                    mActionButtonFavorite.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorWhite)));
+                    mActionButtonFavorite.setImageDrawable(getResources().getDrawable(R.drawable.ic_favorite_red_24dp));
+                    mPresenter.addFavorite(mFood, getApplicationContext());
+                }
                 break;
         }
 
@@ -147,4 +160,5 @@ public class FoodDetailsActivity extends AppCompatActivity implements View.OnCli
     public void addFavoriteFailure() {
 
     }
+
 }

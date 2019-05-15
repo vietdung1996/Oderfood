@@ -1,6 +1,8 @@
 package com.vietdung.oderfood.ui.home;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
@@ -25,6 +27,7 @@ import com.vietdung.oderfood.adapter.ViewPagerAdapter;
 import com.vietdung.oderfood.ui.cart.CartActivity;
 import com.vietdung.oderfood.ui.favorite.FavoriteActivity;
 import com.vietdung.oderfood.ui.fooddetails.PresenterLoginFoodDetails;
+import com.vietdung.oderfood.ui.login.MainActivity;
 import com.vietdung.oderfood.ui.search.SearchActivity;
 import com.vietdung.oderfood.ui.typemenu.TypeMenuActivity;
 
@@ -38,6 +41,8 @@ public class HomeActivity extends AppCompatActivity implements AppBarLayout.OnOf
     private AppBarLayout mAppBarLayout;
     private CollapsingToolbarLayout mCollapsingToolbarLayout;
     private TextView mTextCartSize;
+    private TextView mTextName;
+    private TextView mGmail;
     private Menu mMenu;
     private PresenterLoginFoodDetails mPresenterLoginFoodDetails;
 
@@ -89,6 +94,15 @@ public class HomeActivity extends AppCompatActivity implements AppBarLayout.OnOf
 
     private void addEvents() {
         setToolBar();
+        setNavigationview();
+    }
+
+    private void setNavigationview() {
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("login", Context.MODE_PRIVATE);
+        String name = sharedPreferences.getString("nameuser","");
+        String email = sharedPreferences.getString("email","");
+        mTextName.setText(name);
+        mGmail.setText(email);
     }
 
     private void setToolBar() {
@@ -112,6 +126,8 @@ public class HomeActivity extends AppCompatActivity implements AppBarLayout.OnOf
         mToolbarHome = findViewById(R.id.tb_home);
         mDrawerLayout = findViewById(R.id.drawer_layout);
         View headerLayout = mNavigationView.getHeaderView(0);
+        mTextName  = headerLayout.findViewById(R.id.txtName);
+        mGmail = headerLayout.findViewById(R.id.txtGmail);
         mTabLayout = findViewById(R.id.tab_layout);
         mViewPager = findViewById(R.id.view_pager);
         mViewPager.setAdapter(viewPagerAdapter);
@@ -162,6 +178,15 @@ public class HomeActivity extends AppCompatActivity implements AppBarLayout.OnOf
             case R.id.nav_history:
                 break;
             case R.id.nav_user:
+                break;
+            case R.id.nav_logout:
+                SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("login",Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.remove("nameuser");
+                editor.remove("email");
+                editor.commit();
+                Intent intent2 = new Intent(this, MainActivity.class);
+                startActivity(intent2);
                 break;
         }
         return false;

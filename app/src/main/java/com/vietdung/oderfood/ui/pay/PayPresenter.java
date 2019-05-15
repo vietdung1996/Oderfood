@@ -51,6 +51,7 @@ public class PayPresenter implements PayContract.Presenter {
         param.put("telephone", invoice.getTelephone());
         param.put("address", invoice.getAddress());
         param.put("transfer", "0");
+        param.put("idtransfer",invoice.getIdTransfer());
 
         mAPIOderFood.orderFood(param).enqueue(new Callback<APIResponse>() {
             @Override

@@ -6,12 +6,14 @@ import java.util.List;
 
 public interface ReviewContract {
     interface View{
-        void showComment(List<Comment> comments);
+        void showComment(List<Comment> comments, int numbet);
     }
 
     interface Presenter{
-        void loadReview(int idFood,int limit);
+        int loadReview(int idFood,int limit);
 
         List<Comment> loadMoreReview(int idFood, int limit);
+
+
     }
 }
