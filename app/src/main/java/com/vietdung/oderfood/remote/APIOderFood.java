@@ -4,6 +4,7 @@ package com.vietdung.oderfood.remote;
 import com.vietdung.oderfood.model.APIResponse;
 import com.vietdung.oderfood.model.ObjectClass.Comment;
 import com.vietdung.oderfood.model.ObjectClass.Food;
+import com.vietdung.oderfood.model.ObjectClass.History;
 import com.vietdung.oderfood.model.ObjectClass.SaleOf;
 import com.vietdung.oderfood.model.ObjectClass.TypeFood;
 
@@ -42,9 +43,18 @@ public interface APIOderFood {
     @GET("getfoodsaleof.php")
     Call<List<SaleOf>> getFoodSaleOf();
 
+
     @FormUrlEncoded
     @POST("getnewfood.php")
     Call<List<Food>> getNewFood(@FieldMap Map<String, String> params);
+
+    @FormUrlEncoded
+    @POST("gethistory.php")
+    Call<List<History>> getHistory(@FieldMap Map<String, String> params);
+
+    @FormUrlEncoded
+    @POST("getdetailhistory.php")
+    Call<List<Food>> getDetailHistory(@FieldMap Map<String, String> params);
 
     @FormUrlEncoded
     @POST("search.php")

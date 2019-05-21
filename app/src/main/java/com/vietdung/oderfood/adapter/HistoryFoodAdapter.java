@@ -6,7 +6,6 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,14 +22,14 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.List;
 
-public class FoodSaleOfAdapter extends RecyclerView.Adapter<FoodSaleOfAdapter.ViewHolder> {
+public class HistoryFoodAdapter  extends RecyclerView.Adapter<HistoryFoodAdapter.ViewHolder> {
     private Context mContext;
     private List<Food> mFoods;
     private LayoutInflater mInflater;
     public static String PARA_KEY = "12345";
     public static String INTENT_KEY ="321";
 
-    public FoodSaleOfAdapter(Context context, List<Food> foodList) {
+    public HistoryFoodAdapter(Context context, List<Food> foodList) {
         mContext = context;
         mFoods = foodList;
         mInflater = LayoutInflater.from(mContext);
@@ -38,13 +37,13 @@ public class FoodSaleOfAdapter extends RecyclerView.Adapter<FoodSaleOfAdapter.Vi
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public HistoryFoodAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.custom_food_sale_of,parent,false);
-        return new ViewHolder(view);
+        return new HistoryFoodAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull HistoryFoodAdapter.ViewHolder holder, final int position) {
         holder.bindView(mFoods.get(position));
         holder.mLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +71,7 @@ public class FoodSaleOfAdapter extends RecyclerView.Adapter<FoodSaleOfAdapter.Vi
         private TextView mTextPriceFood;
         private TextView mTextPercent;
         private TextView mTextPriceSaleOf;
+        private TextView mTextNumber;
         public ViewHolder(View itemView) {
             super(itemView);
             mImageFood = itemView.findViewById(R.id.image_food);
@@ -80,12 +80,16 @@ public class FoodSaleOfAdapter extends RecyclerView.Adapter<FoodSaleOfAdapter.Vi
             mLinearLayout = itemView.findViewById(R.id.linearlayout);
             mTextPercent = itemView.findViewById(R.id.text_percent);
             mTextPriceSaleOf = itemView.findViewById(R.id.text_price_sale_of);
+            mTextNumber  = itemView.findViewById(R.id.text_number);
         }
 
         public void bindView(Food food){
             mTextNameFood.setText(food.getName());
             NumberFormat numberFormat = new DecimalFormat("###,###");
             String price = numberFormat.format(food.getPrice());
+
+            mTextNumber.setVisibility(View.VISIBLE);
+            mTextNumber.setText("So luong "+String.valueOf(food.getQuality()));
             if(food.getPercentKM()!=0){
                 String priceSaleOf = numberFormat.format(food.getPrice()-food.getPrice()*food.getPercentKM()/100);
                 mTextPriceFood.setText(priceSaleOf + " VNĐ");

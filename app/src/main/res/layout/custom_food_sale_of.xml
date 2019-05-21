@@ -56,6 +56,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_5"
                 android:textColor="@color/colorBlack"/>
+            <TextView
+                android:visibility="invisible"
+                android:id="@+id/text_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                />
         </LinearLayout>
 
     </LinearLayout>

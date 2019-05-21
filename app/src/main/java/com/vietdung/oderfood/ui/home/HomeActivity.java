@@ -27,6 +27,7 @@ import com.vietdung.oderfood.adapter.ViewPagerAdapter;
 import com.vietdung.oderfood.ui.cart.CartActivity;
 import com.vietdung.oderfood.ui.favorite.FavoriteActivity;
 import com.vietdung.oderfood.ui.fooddetails.PresenterLoginFoodDetails;
+import com.vietdung.oderfood.ui.history.HistoryActivity;
 import com.vietdung.oderfood.ui.login.MainActivity;
 import com.vietdung.oderfood.ui.search.SearchActivity;
 import com.vietdung.oderfood.ui.typemenu.TypeMenuActivity;
@@ -176,6 +177,8 @@ public class HomeActivity extends AppCompatActivity implements AppBarLayout.OnOf
                 startActivity(intent1);
                 break;
             case R.id.nav_history:
+                Intent intent3 = new Intent(this, HistoryActivity.class);
+                startActivity(intent3);
                 break;
             case R.id.nav_user:
                 break;

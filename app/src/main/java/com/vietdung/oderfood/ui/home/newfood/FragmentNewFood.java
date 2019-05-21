@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,24 +42,29 @@ public class FragmentNewFood extends Fragment implements NewFoodContract.View, I
     }
 
     private void initView(View view) {
-        mFoods = new ArrayList<>();
+       // mFoods = new ArrayList<>();
         mAPIOderFood = Common.getAPI();
         mPresenter = new PresenterNewFood(this, mAPIOderFood);
         mRecyclerView = view.findViewById(R.id.recycler_new_food);
-        mSaleOfAdapter = new FoodSaleOfAdapter(getContext(), mFoods);
-        mRecyclerView.setAdapter(mSaleOfAdapter);
         mProgressBar = view.findViewById(R.id.progressbar);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        mRecyclerView.setLayoutManager(linearLayoutManager);
-        mRecyclerView.addOnScrollListener(new LoadMoreScroll(linearLayoutManager, this));
         mPresenter.loadNewFood(0);
-
     }
 
 
     @Override
     public void showFoods(List<Food> foods) {
+        mFoods = foods;
+        mSaleOfAdapter = new FoodSaleOfAdapter(getContext(), mFoods);
+        mRecyclerView.setAdapter(mSaleOfAdapter);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+        mRecyclerView.addOnScrollListener(new LoadMoreScroll(linearLayoutManager, this));
+    }
+
+    @Override
+    public void showFoodsLoadMore(List<Food> foods) {
         mFoods.addAll(foods);
         mSaleOfAdapter.notifyDataSetChanged();
 
@@ -67,5 +73,6 @@ public class FragmentNewFood extends Fragment implements NewFoodContract.View, I
     @Override
     public void LoadMore(int sumItem) {
         mPresenter.loadMoreNewFood(sumItem, mProgressBar);
+
     }
 }

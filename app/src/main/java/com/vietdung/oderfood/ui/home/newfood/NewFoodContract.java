@@ -9,6 +9,7 @@ import java.util.List;
 public interface NewFoodContract {
     interface View {
         void showFoods(List<Food> foods);
+        void showFoodsLoadMore(List<Food> foods);
     }
 
     interface Presenter {

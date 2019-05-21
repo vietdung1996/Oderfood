@@ -20,7 +20,8 @@ public class Food implements Parcelable{
     private int id;
     @SerializedName("PERCENTKM")
     private int percentKM;
-
+    @SerializedName("NUMBERS")
+    private int quality;
     public int getPercentKM() {
         return percentKM;
     }
@@ -29,7 +30,6 @@ public class Food implements Parcelable{
         this.percentKM = percentKM;
     }
 
-    private int quality;
 
 
     private byte[] mImageCart;

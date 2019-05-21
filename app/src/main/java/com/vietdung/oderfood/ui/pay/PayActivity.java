@@ -2,6 +2,8 @@ package com.vietdung.oderfood.ui.pay;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -47,7 +49,7 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
 
         initView();
         setToolbar();
-        initPermission();
+        //initPermission();
     }
 
     private void setToolbar() {
@@ -87,17 +89,18 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
                 String address = mEditAddress.getText().toString().trim();
                 if (nameOrder.length() > 0 && telephone.length() > 0 && address.length() > 0) {
                     if (mCheckBox.isChecked()) {
-                        TelephonyManager telephonyManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-                        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-                            return;
-                        }
-                        String mIdevice = telephonyManager.getDeviceId();
+                        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("login", Context.MODE_PRIVATE);
+                        String name = sharedPreferences.getString("nameuser","");
+                        String email = sharedPreferences.getString("email","");
                         Invoice invoice = new Invoice();
                         invoice.setNameOrder(nameOrder);
                         invoice.setAddress(address);
                         invoice.setTelephone(telephone);
                         invoice.setDetailInvoices(detailInvoices);
-                        invoice.setIdTransfer(mIdevice);
+                        if(email!=null){
+                            invoice.setIdTransfer(email);
+                        }
+
 
                         mPayPresenter.orderFood(invoice);
                     } else {
@@ -132,35 +135,5 @@ public class PayActivity extends AppCompatActivity implements View.OnClickListen
         Toast.makeText(getApplicationContext(), "Đặt món thất bại", Toast.LENGTH_SHORT).show();
     }
 
-    public void initPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-                //Permisson don't granted
-                if (shouldShowRequestPermissionRationale(
-                        Manifest.permission.READ_PHONE_STATE)) {
 
-                } else {
-
-                }
-                //Register permission
-                requestPermissions(new String[]{Manifest.permission.READ_PHONE_STATE}, 1);
-
-            }
-        }
-    }
-
-    @SuppressLint("MissingPermission")
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == 1) {
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-
-            } else {
-
-            }
-        } else {
-            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
-    }
 }
