@@ -20,11 +20,10 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         super(fm);
         mFragments.add(new FragmentSaleOf());
         mFragments.add(new FragmentNewFood());
-        mFragments.add(new FragmentHightLights());
 
         mFragmentTitles.add("Chương trình khuyến mãi");
-        mFragmentTitles.add("Nước uống");
-        mFragmentTitles.add("Nổi bât");
+        mFragmentTitles.add("Món mới");
+      //  mFragmentTitles.add("Nổi bât");
     }
 
     @Override
